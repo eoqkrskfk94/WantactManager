@@ -6,23 +6,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import com.mobinity.wantactmanager.R
-import com.mobinity.wantactmanager.databinding.FragmentMainBinding
+import com.mobinity.wantactmanager.databinding.FragmentLoginBinding
+import com.mobinity.wantactmanager.viewModel.LoginViewModel
 
 
-class MainFragment : Fragment() {
-    private var _binding: FragmentMainBinding? = null
+class LoginFragment : Fragment() {
+    private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
-        val view = binding.root
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
+        val loginViewModel = LoginViewModel(requireContext())
+        binding.viewModel = loginViewModel
+        binding.lifecycleOwner = this
 
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
