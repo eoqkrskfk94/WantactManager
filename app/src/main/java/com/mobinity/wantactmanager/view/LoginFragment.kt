@@ -22,7 +22,7 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
         val loginViewModel = LoginViewModel(requireContext())
         binding.viewModel = loginViewModel
         binding.lifecycleOwner = this
